@@ -1,0 +1,25 @@
+{
+  "name": "WOD Gen",
+  "short_name": "WOD Gen",
+  "description": "CrossFit WOD Generator",
+  "start_url": "/wod-gen/",
+  "scope": "/wod-gen/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/wod-gen/icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/wod-gen/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
