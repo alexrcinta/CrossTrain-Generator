@@ -1,5 +1,5 @@
 const CACHE_NAME = 'wod-gen-v3';
-const BASE_URL = '/wod-gen/';
+const BASE_URL = '/CrossTrain-Generator/';
 
 const ASSETS = [
   BASE_URL,
@@ -51,12 +51,12 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
   
-  // Solo interceptar requests dentro de /wod-gen/ o desde unpkg.com
+  // Solo interceptar requests dentro de /CrossTrain-Generator/ o desde unpkg.com
   if (!url.pathname.startsWith(BASE_URL) && !url.hostname.includes('unpkg.com')) {
     return;
   }
   
-  // Para navegación a rutas dentro de /wod-gen/, servir index.html
+  // Para navegación a rutas dentro de /CrossTrain-Generator/, servir index.html
   if (e.request.mode === 'navigate' && url.pathname.startsWith(BASE_URL)) {
     e.respondWith(
       caches.match(BASE_URL + 'index.html')
