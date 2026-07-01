@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test Babel Minimo</title>
+</head>
+<body style="font-family:sans-serif;padding:20px;">
+  <h2>Test Babel Mínimo</h2>
+  <div id="root">Esperando...</div>
+  <div id="status" style="margin-top:20px;padding:15px;background:#eee;font-family:monospace;font-size:14px;white-space:pre-wrap;"></div>
+
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script>
+    var st = document.getElementById('status');
+    function log(m){ st.textContent += m + "\n"; }
+    window.addEventListener('error', function(e){
+      log("❌ ERROR: " + e.message + " @ " + (e.filename||'').split('/').pop() + ":" + (e.lineno||''));
+    }, true);
+    log("React cargado: " + (typeof React !== 'undefined'));
+    log("ReactDOM cargado: " + (typeof ReactDOM !== 'undefined'));
+    log("Babel cargado: " + (typeof Babel !== 'undefined'));
+  </script>
+
+  <script type="text/babel" data-presets="react">
+    // JSX trivial - si ESTO falla, Babel-in-browser no funciona en este navegador
+    const el = <div style={{color:'green',fontSize:'20px'}}>✅ BABEL FUNCIONA - JSX compilado correctamente</div>;
+    ReactDOM.createRoot(document.getElementById('root')).render(el);
+    document.getElementById('status').textContent += "✅ El bloque Babel se ejecutó\n";
+  </script>
+</body>
+</html>
